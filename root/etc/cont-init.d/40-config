@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+# Check if asound.conf is present in /config. If so copy the file to /etc
+if [[ -e "/config/asound.conf" ]]; then
+	echo "Copying asound.conf"
+	cp /config/asound.conf /etc/asound.conf
+fi
+
+# Remount /dev/shm to avoid Kodi running out of diskpace which results in crash
+# mount -o remount,size=256M /dev/shm
+
+# permissions
+chown abc:abc \
+	/config
